@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Result</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Search Result</h1>
+    <% if (query && last_searched) { %>
+      <p>The last time "<%= query %>" was searched: <%= new Date(last_searched).toLocaleString() %></p>
+    <% } else if (query) { %>
+      <p>No record found for "<%= query %>".</p>
+    <% } else { %>
+      <p>An error occurred. Please try again.</p>
+    <% } %>
+    <a href="/">Search Again</a>
+  </div>
+</body>
+</html>

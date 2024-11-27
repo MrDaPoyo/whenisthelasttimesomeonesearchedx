@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Tracker</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Search Tracker</h1>
+    
+    <!-- Search Form -->
+    <form action="/search" method="POST">
+      <input type="text" name="query" placeholder="Enter a search term" required />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Search History -->
+    <h2>Search History</h2>
+    <% if (searches.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Search Term</th>
+            <th>Last Searched</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% searches.forEach(search => { %>
+            <tr>
+              <td><%= search.query %></td>
+              <td><%= new Date(search.last_searched).toLocaleString() %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No searches have been recorded yet.</p>
+    <% } %>
+  </div>
+</body>
+</html>
