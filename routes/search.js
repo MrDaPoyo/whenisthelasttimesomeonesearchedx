@@ -13,10 +13,11 @@ module.exports = (db) => {
 
   // Handle a new search
   router.post('/search', (req, res) => {
-    const { query } = req.body;
+    var { query } = req.body;
 
     if (!query) return res.redirect('/');
-
+    query = query.trim();
+    query = query.toLowerCase();
     const now = new Date().toISOString();
     db.run(
       `INSERT INTO searches (query, last_searched) VALUES (?, ?)
